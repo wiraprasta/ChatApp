@@ -1,0 +1,38 @@
+C:\Users\USER\ChatApp\ChatClient\bin\Debug\net9.0-windows\ChatClient.exe
+C:\Users\USER\ChatApp\ChatClient\bin\Debug\net9.0-windows\ChatClient.deps.json
+C:\Users\USER\ChatApp\ChatClient\bin\Debug\net9.0-windows\ChatClient.runtimeconfig.json
+C:\Users\USER\ChatApp\ChatClient\bin\Debug\net9.0-windows\ChatClient.dll
+C:\Users\USER\ChatApp\ChatClient\bin\Debug\net9.0-windows\ChatClient.pdb
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\MainWindow.baml
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\MainWindow.g.cs
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\App.g.cs
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient_MarkupCompile.cache
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.g.resources
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.AssemblyInfoInputs.cache
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.AssemblyInfo.cs
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.csproj.CoreCompileInputs.cache
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.dll
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\refint\ChatClient.dll
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.pdb
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ChatClient.genruntimeconfig.cache
+C:\Users\USER\ChatApp\ChatClient\obj\Debug\net9.0-windows\ref\ChatClient.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\bin\Debug\net9.0-windows\ChatClient.exe
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\bin\Debug\net9.0-windows\ChatClient.deps.json
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\bin\Debug\net9.0-windows\ChatClient.runtimeconfig.json
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\bin\Debug\net9.0-windows\ChatClient.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\bin\Debug\net9.0-windows\ChatClient.pdb
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\MainWindow.baml
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\MainWindow.g.cs
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\App.g.cs
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient_MarkupCompile.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.g.resources
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.AssemblyInfoInputs.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.AssemblyInfo.cs
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.csproj.CoreCompileInputs.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\refint\ChatClient.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.pdb
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ChatClient.genruntimeconfig.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatClient\obj\Debug\net9.0-windows\ref\ChatClient.dll
