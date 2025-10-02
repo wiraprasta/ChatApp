@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\ChatApp\\ChatClient\\ChatClient.csproj": {}
+    "D:\\PENS\\praktikum jaringan komputer\\ChatApp-main1\\ChatClient\\ChatClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\ChatApp\\ChatClient\\ChatClient.csproj": {
+    "D:\\PENS\\praktikum jaringan komputer\\ChatApp-main1\\ChatClient\\ChatClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\ChatApp\\ChatClient\\ChatClient.csproj",
+        "projectUniqueName": "D:\\PENS\\praktikum jaringan komputer\\ChatApp-main1\\ChatClient\\ChatClient.csproj",
         "projectName": "ChatClient",
-        "projectPath": "C:\\Users\\USER\\ChatApp\\ChatClient\\ChatClient.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\ChatApp\\ChatClient\\obj\\",
+        "projectPath": "D:\\PENS\\praktikum jaringan komputer\\ChatApp-main1\\ChatClient\\ChatClient.csproj",
+        "packagesPath": "C:\\Users\\Wira\\.nuget\\packages\\",
+        "outputPath": "D:\\PENS\\praktikum jaringan komputer\\ChatApp-main1\\ChatClient\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Wira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0-windows"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

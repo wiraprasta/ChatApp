@@ -12,3 +12,31 @@ C:\Users\USER\ChatApp\ChatServer\obj\Debug\net9.0\refint\ChatServer.dll
 C:\Users\USER\ChatApp\ChatServer\obj\Debug\net9.0\ChatServer.pdb
 C:\Users\USER\ChatApp\ChatServer\obj\Debug\net9.0\ChatServer.genruntimeconfig.cache
 C:\Users\USER\ChatApp\ChatServer\obj\Debug\net9.0\ref\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\bin\Debug\net9.0\ChatServer.exe
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\bin\Debug\net9.0\ChatServer.deps.json
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\bin\Debug\net9.0\ChatServer.runtimeconfig.json
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\bin\Debug\net9.0\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\bin\Debug\net9.0\ChatServer.pdb
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.AssemblyInfoInputs.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.AssemblyInfo.cs
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.csproj.CoreCompileInputs.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\refint\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.pdb
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ChatServer.genruntimeconfig.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main\ChatServer\obj\Debug\net9.0\ref\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\bin\Debug\net9.0\ChatServer.exe
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\bin\Debug\net9.0\ChatServer.deps.json
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\bin\Debug\net9.0\ChatServer.runtimeconfig.json
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\bin\Debug\net9.0\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\bin\Debug\net9.0\ChatServer.pdb
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.AssemblyInfoInputs.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.AssemblyInfo.cs
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.csproj.CoreCompileInputs.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\refint\ChatServer.dll
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.pdb
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ChatServer.genruntimeconfig.cache
+D:\PENS\praktikum jaringan komputer\ChatApp-main1\ChatServer\obj\Debug\net9.0\ref\ChatServer.dll

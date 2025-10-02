@@ -1,124 +1,164 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
+using System.Linq;
+using ChatApp;
 
-public class ChatServer
+class Server
 {
-    private static TcpListener _listener = new TcpListener(IPAddress.Any, 8888);
-    private static Dictionary<string, TcpClient> _clients = new Dictionary<string, TcpClient>();
-    private static object _lock = new object();
+    private static ConcurrentDictionary<string, TcpClient> clients = new ConcurrentDictionary<string, TcpClient>();
+    private static readonly Encoding Utf8WithoutBom = new UTF8Encoding(false);
 
-    public static async Task Main(string[] args)
+    static async Task Main(string[] args)
     {
-        _listener.Start();
-        Console.WriteLine("Server started on port 8888. Waiting for clients...");
+        TcpListener server = new TcpListener(IPAddress.Any, 8888);
+        server.Start();
+        Console.WriteLine($"[LOG] Server started on port 8888 at {DateTime.Now}");
 
         while (true)
         {
-            TcpClient client = await _listener.AcceptTcpClientAsync();
-            Console.WriteLine("New client connected!");
-            
-            _ = Task.Run(() => HandleClientAsync(client));
+            TcpClient client = await server.AcceptTcpClientAsync();
+            _ = Task.Run(() => HandleClient(client));
         }
     }
 
-    private static async Task HandleClientAsync(TcpClient client)
+    static async Task HandleClient(TcpClient tcpClient)
     {
-        var stream = client.GetStream();
-        var reader = new StreamReader(stream, Encoding.UTF8);
-        string? username = null;
-        
+        string currentUsername = string.Empty;
+        var clientEndpoint = tcpClient.Client.RemoteEndPoint?.ToString() ?? "unknown";
+        Console.WriteLine($"[LOG] New client connected from {clientEndpoint}. Waiting for username...");
+
+        NetworkStream stream = tcpClient.GetStream();
+        var reader = new StreamReader(stream, Utf8WithoutBom);
+
         try
         {
-            username = await reader.ReadLineAsync();
-            if (string.IsNullOrEmpty(username)) return;
+            var initialJson = await reader.ReadLineAsync();
+            if (initialJson == null) return;
 
-            lock (_lock)
+            var initialMsg = JsonSerializer.Deserialize<Message>(initialJson);
+            if (initialMsg?.Type == "join" && !string.IsNullOrEmpty(initialMsg.From))
             {
-                _clients.Add(username, client);
-            }
-            
-            await BroadcastMessageAsync($"{username} has joined the chat.", null);
-            await SendUserListAsync();
-            
-            while (true)
-            {
-                string? jsonMessage = await reader.ReadLineAsync();
-                if (jsonMessage == null) break; 
-                
-                if (jsonMessage.StartsWith("{") && jsonMessage.EndsWith("}"))
+                currentUsername = initialMsg.From;
+                if (clients.TryAdd(currentUsername, tcpClient))
                 {
-                    await BroadcastMessageAsync(jsonMessage, client);
+                    Console.WriteLine($"[LOG] Client '{currentUsername}' from {clientEndpoint} authenticated successfully.");
+                    var joinNotification = new Message { Type = "sys", Text = $"'{currentUsername}' has joined the chat.", Timestamp = DateTime.Now };
+                    await BroadcastMessage(joinNotification, currentUsername);
+                    await BroadcastUserList(); // BARU: Kirim daftar user ke semua client
+                }
+                else
+                {
+                    Console.WriteLine($"[WARN] Client from {clientEndpoint} failed to join with duplicate username '{currentUsername}'.");
+                    var errorMsg = new Message { Type = "error", Text = "Username is already taken.", Timestamp = DateTime.Now };
+                    await SendMessage(tcpClient, errorMsg);
+                    tcpClient.Close();
+                    return;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"[WARN] Invalid join protocol from {clientEndpoint}. Connection closed.");
+                tcpClient.Close();
+                return;
+            }
+
+            while (tcpClient.Connected)
+            {
+                var jsonMessage = await reader.ReadLineAsync();
+                if (jsonMessage == null) break;
+
+                var message = JsonSerializer.Deserialize<Message>(jsonMessage);
+                if (message == null) continue;
+
+                message.From = currentUsername;
+                message.Timestamp = DateTime.Now;
+
+                if (message.Type == "pm")
+                {
+                    Console.WriteLine($"[MSG] Private message from '{message.From}' to '{message.To}'.");
+                    await SendPrivateMessage(message);
+                }
+                else
+                {
+                    Console.WriteLine($"[MSG] Broadcast from '{message.From}'.");
+                    await BroadcastMessage(message);
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error handling client {username}: {ex.Message}");
+            Console.WriteLine($"[ERROR] Error with client '{currentUsername}': {ex.Message}");
         }
         finally
         {
-            if (username != null)
+            if (!string.IsNullOrEmpty(currentUsername))
             {
-                lock (_lock)
-                {
-                    _clients.Remove(username);
-                }
-                await BroadcastMessageAsync($"{username} has left the chat.", null);
-                await SendUserListAsync();
+                clients.TryRemove(currentUsername, out _);
+                Console.WriteLine($"[LOG] Client '{currentUsername}' disconnected.");
+                var leaveNotification = new Message { Type = "sys", Text = $"'{currentUsername}' has left the chat.", Timestamp = DateTime.Now };
+                await BroadcastMessage(leaveNotification);
+                await BroadcastUserList(); // BARU: Update daftar user setelah ada yang keluar
             }
-            client.Close();
+            tcpClient.Close();
         }
     }
 
-    private static async Task BroadcastMessageAsync(string message, TcpClient? sender)
+    static async Task SendMessage(TcpClient client, Message message)
     {
-        var msg = new { type = "chat", text = message };
-        string json = JsonSerializer.Serialize(msg);
-        byte[] buffer = Encoding.UTF8.GetBytes(json + Environment.NewLine);
-        
-        List<TcpClient> clientList;
-        lock (_lock)
+        try
         {
-            clientList = _clients.Values.ToList();
-        }
-
-        foreach (var client in clientList)
-        {
-            var stream = client.GetStream();
-            try
+            if (client.Connected)
             {
-                await stream.WriteAsync(buffer, 0, buffer.Length);
+                var stream = client.GetStream();
+                var writer = new StreamWriter(stream, Utf8WithoutBom) { AutoFlush = true };
+                var jsonMessage = JsonSerializer.Serialize(message);
+                await writer.WriteLineAsync(jsonMessage);
             }
-            catch { }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[ERROR] Failed to send message: {ex.Message}");
         }
     }
 
-    private static async Task SendUserListAsync()
+    static async Task BroadcastMessage(Message message, string? excludeUsername = null)
     {
-        var users = new { type = "users", list = _clients.Keys.ToArray() };
-        string json = JsonSerializer.Serialize(users);
-        byte[] buffer = Encoding.UTF8.GetBytes(json + Environment.NewLine);
-
-        List<TcpClient> clientList;
-        lock (_lock)
+        foreach (var (username, client) in clients)
         {
-            clientList = _clients.Values.ToList();
-        }
-
-        foreach (var client in clientList)
-        {
-            try
+            if (username != excludeUsername)
             {
-                await client.GetStream().WriteAsync(buffer, 0, buffer.Length);
+                await SendMessage(client, message);
             }
-            catch { }
+        }
+    }
+    
+    static async Task BroadcastUserList()
+    {
+        var userList = string.Join(",", clients.Keys.OrderBy(name => name));
+        var userListMessage = new Message
+        {
+            Type = "userlist",
+            Text = userList,
+            Timestamp = DateTime.Now
+        };
+        Console.WriteLine($"[LOG] Broadcasting updated user list: {userList}");
+        await BroadcastMessage(userListMessage);
+    }
+
+    static async Task SendPrivateMessage(Message message)
+    {
+        if (!string.IsNullOrEmpty(message.To) && clients.TryGetValue(message.To, out var recipientClient))
+        {
+            await SendMessage(recipientClient, message);
+        }
+        if (!string.IsNullOrEmpty(message.From) && clients.TryGetValue(message.From, out var senderClient))
+        {
+            await SendMessage(senderClient, message);
         }
     }
 }
